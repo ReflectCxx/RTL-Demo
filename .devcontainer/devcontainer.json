@@ -1,0 +1,10 @@
+{
+  "name": "RTL Demo",
+  "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu",
+  "postCreateCommand": "cmake -S . -B build && cmake --build build && ./bin/RTLDemoApp",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-vscode.cpptools"]
+    }
+  }
+}
