@@ -3,8 +3,23 @@
 A minimal, self-contained demonstration of the
 **Reflection Template Library (RTL)** for C++.
 
-This repository showcases RTL’s core capabilities in a lightweight form, without pulling in the full project, tests, or benchmarks.
+This repository showcases RTL’s core capabilities using a simple, focused project setup.
 
+---
+
+## ▶ Try It in Your Browser
+
+Run the demo instantly using GitHub Codespaces:
+
+[Open Demo Environment](https://github.com/codespaces/new?repo=ReflectCxx/RTL-Demo&quickstart=1)
+
+> The first launch may take a minute while GitHub prepares the environment and builds the demo.
+
+After the environment loads, open the terminal and run:
+
+```bash
+./bin/RTLDemoApp
+```
 ---
 
 ## What This Demo Shows
@@ -15,16 +30,6 @@ This repository showcases RTL’s core capabilities in a lightweight form, witho
 * Invoking member functions safely and type-correctly
 
 All without compile-time coupling to the concrete types being used.
-
----
-
-## ▶ Try It in Your Browser (No Setup)
-
-Run the demo instantly using GitHub Codespaces:
-
-[Open Demo Environment](https://github.com/codespaces/new?repo=ReflectCxx/RTL-Demo&quickstart=1)
-
-> The first launch may take a minute while GitHub prepares the environment and builds the demo.
 
 ---
 
