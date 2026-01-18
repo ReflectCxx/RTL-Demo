@@ -41,7 +41,7 @@ int main()
         std::cout << "\n[step] Constructing Person() on stack";
 
         {
-            rtl::constructor<> personCtor = classPerson->ctor();
+            rtl::constructor<> personCtor = classPerson->ctorT<>();
             if (!personCtor) {
                 die("Default constructor not found.");
             }
@@ -59,7 +59,7 @@ int main()
         // ------------------------------------------------------------
         std::cout << "\n\n[step] Constructing Person(\"Bernard Reflection\", 42) on heap";
 
-        rtl::constructor<std::string, int> personCtor = classPerson->ctor<std::string, int>();
+        rtl::constructor<std::string, int> personCtor = classPerson->ctorT<std::string, int>();
 
         if (!personCtor) {
             die(personCtor.get_init_error());
