@@ -17,6 +17,8 @@ if [ ! -f "$MIRROR_EXE" ]; then
     exit 1
 fi
 
+chmod +x "$MIRROR_EXE" 2>/dev/null || true
+
 if [ ! -f "$SOURCE_LIST" ]; then
     echo "ERROR: reflection_srcs.txt not found."
     echo "Expected at:"
