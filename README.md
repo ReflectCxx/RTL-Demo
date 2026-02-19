@@ -6,8 +6,11 @@
 &nbsp;
 [![C++20](https://img.shields.io/badge/C%2B%2B-20-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org)
 
-A minimal, self-contained demonstration of the
-**[Reflection Template Library (RTL)](https://github.com/ReflectCxx/ReflectionTemplateLibrary-CPP)** along with **[clang-mirror](https://github.com/ReflectCxx/clang-mirror)** generated registration boiler-plate code, enabling run-time reflection for C++.
+A minimal, end-to-end demonstration of modern C++ run-time reflection using:
+
+* [Reflection Template Library (RTL)](https://github.com/ReflectCxx/ReflectionTemplateLibrary-CPP) – the runtime reflection engine
+
+* [clang-mirror](https://github.com/ReflectCxx/clang-mirror) – the compile-time metadata generat
 
 This repository showcases RTL's core capabilities using a simple, focused project setup.
 
