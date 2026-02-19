@@ -29,15 +29,13 @@ namespace rtl
         using MethodMap = std::unordered_map< std::string, Method >;
 
         mutable traits::uid_t m_recordId;
-        mutable std::string m_namespaceStr;
         mutable std::string m_recordName;
         mutable MethodMap m_methods;
 
     private:
 
-        Record(const std::string& pRecordName, const traits::uid_t pRecordId, const std::string& pNamespace)
+        Record(const std::string& pRecordName, const traits::uid_t pRecordId)
             : m_recordId(pRecordId)
-            , m_namespaceStr(pNamespace)
             , m_recordName(pRecordName)
         { }
 
@@ -61,9 +59,9 @@ namespace rtl
         @param: const std::string& (name of the method)
         @return: std::optional<Method>
         * if the method isn't found by the given name, std::nullopt is returned.
-*/      std::optional<Method> getMethod(const std::string& pMethod) const
+*/      std::optional<Method> getMethod(std::string_view pMethod) const
         {
-            const auto& itr = m_methods.find(pMethod);
+            const auto& itr = m_methods.find(std::string(pMethod));
             if (itr != m_methods.end()) {
                 return std::optional(itr->second);
             }
