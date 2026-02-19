@@ -76,7 +76,6 @@ After making changes:
 
 ```bash
 ./scripts/run_clang_mirror.sh
-cmake --build build
 ```
 
 Then access the new members or functions reflectively from `main.cpp` using RTL APIs.
@@ -87,26 +86,30 @@ Then access the new members or functions reflectively from `main.cpp` using RTL 
 2. Implement your class normally (no macros or annotations required)
 3. Add the new source file path to: `registration_srcs.txt`
 
-> The last step is mandatory. Only files listed in `registration_srcs.txt` are analyzed by `clang-mirror`.
-
-Then regenerate and rebuild:
+Then regenerate:
 
 ```bash
 ./scripts/run_clang_mirror.sh
-cmake --build build
 ```
+Once done, update `main.cpp` to construct, inspect, or invoke your new type via RTL reflection.
+Then rebuild and run the application:
 
-Once built, update `main.cpp` to construct, inspect, or invoke your new type via RTL reflection.
+```bash
+cmake --build build
+
+./build/MyReflectionApp
+```
 
 ## Reflection Workflow Reminder
 
-Whenever you modify or add a type or free-function:
+Whenever you modify or add a type or free function:
 
 1. Ensure the file is listed in `registration_srcs.txt`
 2. Run `run_clang_mirror.sh`
-3. Rebuild with CMake
+3. Add or update reflection usage in `main.cpp`
+4. Rebuild with CMake
 
-Reflection metadata is regenerated from scratch each time.
+Reflection metadata is regenerated from scratch each time the generator is executed.
 
 ## Main RTL Project
 
