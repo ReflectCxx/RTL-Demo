@@ -5,6 +5,13 @@ set -e
 if ! ldconfig -p | grep -q "libclang-cpp.so.21"; then
     echo "LLVM 21 not found. Installing..."
 
+    sudo apt-get update
+    sudo apt-get install -y \
+        wget \
+        gnupg \
+        lsb-release \
+        software-properties-common
+
     wget https://apt.llvm.org/llvm.sh
     chmod +x llvm.sh
     sudo ./llvm.sh 21
