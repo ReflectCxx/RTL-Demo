@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 MIRROR_EXE="$PROJECT_ROOT/clang-mirror/clang-mirror"
-SOURCE_LIST="$PROJECT_ROOT/reflection_srcs.txt"
+SOURCE_LIST="$PROJECT_ROOT/registration_srcs.txt"
 OUT_DIR="$PROJECT_ROOT"
 
 if [[ ! -f "$MIRROR_EXE" ]]; then
