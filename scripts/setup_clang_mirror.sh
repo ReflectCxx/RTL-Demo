@@ -13,6 +13,12 @@ REPO="ReflectCxx/clang-mirror"
 ASSET="clang-mirror-linux.tar.gz"
 DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${RELEASE_TAG}/${ASSET}"
 
+# Ensure curl and certificates exist
+if ! command -v curl >/dev/null 2>&1; then
+    sudo apt-get update
+    sudo apt-get install -y curl ca-certificates
+fi
+
 if [ -f "$INSTALL_DIR/clang-mirror" ]; then
     echo "clang-mirror already installed at:"
     echo "$INSTALL_DIR"
