@@ -1,6 +1,6 @@
 {
   "name": "Clang Mirror Demo",
-  "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+  "image": "ubuntu:latest",
   "postCreateCommand": "chmod +x scripts/setup_clang_mirror.sh scripts/run_clang_mirror.sh && scripts/setup_clang_mirror.sh && scripts/run_clang_mirror.sh && cmake -S . -B build && cmake --build build",
   "customizations": {
     "vscode": {
