@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
+# Ensure libclang runtime exists (Ubuntu / Debian)
+if ! ldconfig -p | grep -q "libclang-cpp"; then
+    echo "libclang-cpp not found. Installing Clang/LLVM runtime..."
+    sudo apt-get update
+    sudo apt-get install -y clang libclang-cpp-dev llvm
+fi
+
 # Run clang-mirror (Linux)
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
