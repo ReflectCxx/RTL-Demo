@@ -1,7 +1,7 @@
 {
-  "name": "RTL Demo",
-  "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu",
-  "postCreateCommand": "cmake -S . -B build && cmake --build build && chmod +x scripts/download-latest-binaries.sh && ./scripts/download-latest-binaries.sh",
+  "name": "Clang Mirror Demo",
+  "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-22.04",
+  "postCreateCommand": "chmod +x script/setup_clang_mirror.sh script/run_clang_mirror.sh && script/setup_clang_mirror.sh && script/run_clang_mirror.sh && cmake -S . -B build && cmake --build build",
   "customizations": {
     "vscode": {
       "extensions": ["ms-vscode.cpptools"]
