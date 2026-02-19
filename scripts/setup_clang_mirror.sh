@@ -27,6 +27,30 @@ if [ -f "$INSTALL_DIR/clang-mirror" ]; then
     exit 0
 fi
 
+# Ensure LLVM 21 runtime exists
+if ! ldconfig -p | grep -q "libclang-cpp.so.21"; then
+    echo "LLVM 21 not found. Installing..."
+
+    sudo apt-get update
+    sudo apt-get install -y \
+        wget \
+        gnupg \
+        lsb-release \
+        software-properties-common
+
+    wget https://apt.llvm.org/llvm.sh
+    chmod +x llvm.sh
+    sudo ./llvm.sh 21
+
+    sudo apt-get update
+    sudo apt-get install -y \
+        ninja-build \
+        clang-21 \
+        clang-tools-21 \
+        llvm-21-dev \
+        libclang-21-dev
+fi
+
 mkdir -p "$INSTALL_DIR"
 
 echo
