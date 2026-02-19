@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 MIRROR_EXE="$PROJECT_ROOT/clang-mirror/clang-mirror"
 SOURCE_LIST="$SCRIPT_DIR/reflection_srcs.txt"
@@ -20,6 +20,7 @@ if [[ ! -f "$SOURCE_LIST" ]]; then
     exit 1
 fi
 
+# Collect source files into an array
 FILE_ARGS=()
 
 while IFS= read -r LINE || [[ -n "$LINE" ]]; do
@@ -30,9 +31,7 @@ while IFS= read -r LINE || [[ -n "$LINE" ]]; do
 done < "$SOURCE_LIST"
 
 echo "Running:"
-printf '"%s" ' "$MIRROR_EXE"
-printf '"%s" ' "${FILE_ARGS[@]}"
-printf '-out-dir="%s" -- -std=c++20 -fsyntax-only\n' "$OUT_DIR"
+echo "$MIRROR_EXE ${FILE_ARGS[*]} -out-dir=$OUT_DIR -- -std=c++20 -fsyntax-only"
 echo
 
 "$MIRROR_EXE" \
@@ -41,4 +40,4 @@ echo
     -- -std=c++20 -fsyntax-only
 
 echo
-echo "Registration code generated in : $OUT_DIR/RTLRegistration/"
+echo "Registration code generated in: $OUT_DIR/RTLRegistration/"
