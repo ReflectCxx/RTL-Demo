@@ -1,0 +1,4 @@
+# Reflection enabled sources
+
+src/Person.cpp
+src/Date.cpp

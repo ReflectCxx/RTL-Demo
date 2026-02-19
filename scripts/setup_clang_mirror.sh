@@ -3,7 +3,9 @@ set -e
 
 # Setup clang-mirror (Linux)
 
-PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+
 INSTALL_DIR="$PROJECT_ROOT/clang-mirror"
 RELEASE_TAG="release-latest"
 REPO="ReflectCxx/clang-mirror"
@@ -11,7 +13,6 @@ REPO="ReflectCxx/clang-mirror"
 ASSET="clang-mirror-linux.tar.gz"
 DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${RELEASE_TAG}/${ASSET}"
 
-# Skip if already installed
 if [ -f "$INSTALL_DIR/clang-mirror" ]; then
     echo "clang-mirror already installed at:"
     echo "$INSTALL_DIR"

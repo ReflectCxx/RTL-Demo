@@ -1,8 +1,11 @@
 @echo off
 setlocal
 
-set PROJECT_ROOT=%~dp0
-set INSTALL_DIR=%PROJECT_ROOT%clang-mirror
+REM Setup clang-mirror (Windows)
+set SCRIPT_DIR=%~dp0
+for %%I in ("%SCRIPT_DIR%..") do set PROJECT_ROOT=%%~fI
+
+set INSTALL_DIR=%PROJECT_ROOT%\clang-mirror
 set RELEASE_TAG=release-latest
 set REPO=ReflectCxx/clang-mirror
 
@@ -25,7 +28,7 @@ echo Downloading clang-mirror from:
 echo %DOWNLOAD_URL%
 echo.
 
-curl -L -o "%INSTALL_DIR%%ASSET%" "%DOWNLOAD_URL%"
+curl -L -o "%INSTALL_DIR%\%ASSET%" "%DOWNLOAD_URL%"
 if errorlevel 1 (
 echo Download failed.
 exit /b 1
@@ -34,13 +37,13 @@ exit /b 1
 echo.
 echo Extracting...
 
-tar -xf "%INSTALL_DIR%%ASSET%" -C "%INSTALL_DIR%"
+tar -xf "%INSTALL_DIR%\%ASSET%" -C "%INSTALL_DIR%"
 if errorlevel 1 (
 echo Extraction failed.
 exit /b 1
 )
 
-del "%INSTALL_DIR%%ASSET%"
+del "%INSTALL_DIR%\%ASSET%"
 
 echo.
 echo clang-mirror successfully installed at:

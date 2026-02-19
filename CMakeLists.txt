@@ -4,7 +4,7 @@
 # -----------------------------------------------
 cmake_minimum_required(VERSION 3.20)
 
-project(TestSrcSamples LANGUAGES CXX)
+project(MyReflectionApp LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -23,7 +23,7 @@ file(GLOB USER_SRCS
 # ------------------
 # Executable target
 # ------------------
-add_executable(TestSrcSamples
+add_executable(MyReflectionApp
     main.cpp
     ${USER_SRCS}
 )
@@ -31,14 +31,14 @@ add_executable(TestSrcSamples
 # -----------------------------------
 # Include directories (user headers)
 # -----------------------------------
-target_include_directories(TestSrcSamples PRIVATE
+target_include_directories(MyReflectionApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # ----------------------------------------------
 # Enable RTL (runtime + registration injection)
 # ----------------------------------------------
-rtl_enable(TestSrcSamples)
+rtl_enable(MyReflectionApp)
 
 # ---------------------------
 # Visual Studio organization
