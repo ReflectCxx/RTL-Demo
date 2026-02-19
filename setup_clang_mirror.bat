@@ -1,8 +1,6 @@
 @echo off
 setlocal
 
-REM Setup clang-mirror (Windows)
-
 set PROJECT_ROOT=%~dp0
 set INSTALL_DIR=%PROJECT_ROOT%clang-mirror
 set RELEASE_TAG=release-latest
@@ -11,9 +9,10 @@ set REPO=ReflectCxx/clang-mirror
 set ASSET=clang-mirror-windows.zip
 set DOWNLOAD_URL=https://github.com/%REPO%/releases/download/%RELEASE_TAG%/%ASSET%
 
-if exist "%INSTALL_DIR%\clang-mirror.exe" (
+REM Skip if already installed
+if exist "%INSTALL_DIR%\release\clang-mirror.exe" (
 echo clang-mirror already installed at:
-echo %INSTALL_DIR%
+echo %INSTALL_DIR%\release
 echo.
 echo Skipping download.
 exit /b 0
@@ -45,7 +44,7 @@ del "%INSTALL_DIR%%ASSET%"
 
 echo.
 echo clang-mirror successfully installed at:
-echo %INSTALL_DIR%
+echo %INSTALL_DIR%\release
 echo.
 
 endlocal
