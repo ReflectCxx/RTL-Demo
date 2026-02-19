@@ -14,7 +14,6 @@ ASSET="clang-mirror-linux.tar.gz"
 DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${RELEASE_TAG}/${ASSET}"
 
 if [ -f "$INSTALL_DIR/clang-mirror" ]; then
-    chmod +x "$INSTALL_DIR/clang-mirror" 2>/dev/null || true
     echo "clang-mirror already installed at:"
     echo "$INSTALL_DIR"
     echo
@@ -38,7 +37,7 @@ tar -xzf "$INSTALL_DIR/$ASSET" -C "$INSTALL_DIR"
 
 rm "$INSTALL_DIR/$ASSET"
 
-chmod +x "$INSTALL_DIR/clang-mirror" 2>/dev/null || true
+chmod +x "$INSTALL_DIR/clang-mirror"
 
 echo
 echo "clang-mirror successfully installed at:"
