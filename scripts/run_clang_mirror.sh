@@ -32,12 +32,11 @@ done < "$SOURCE_LIST"
 
 echo "Running:"
 echo "$MIRROR_EXE ${FILE_ARGS[*]} -out-dir=$OUT_DIR -- -std=c++20 -fsyntax-only"
-echo
 
 "$MIRROR_EXE" \
     "${FILE_ARGS[@]}" \
     -out-dir="$OUT_DIR" \
     -- -std=c++20 -fsyntax-only
 
-echo
 echo "Registration code generated in: $OUT_DIR/RTLRegistration/"
+echo
