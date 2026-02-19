@@ -79,7 +79,7 @@ int main() {
     // call Person::getAccessCard via reflection (as fast as native function-pointer call).
     auto cardStr = getAccessCard(purposeStr, personObj);
 
-    std::cout << "\n updated access-card :\n" << cardStr << std::endl;
+    std::cout << "\n updated access-card :\n" << cardStr << "\n\n";
 
 	return 0;
 }
