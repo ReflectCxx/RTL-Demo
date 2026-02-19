@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
@@ -8,40 +8,37 @@ MIRROR_EXE="$PROJECT_ROOT/clang-mirror/clang-mirror"
 SOURCE_LIST="$SCRIPT_DIR/reflection_srcs.txt"
 OUT_DIR="$PROJECT_ROOT"
 
-if [ ! -f "$MIRROR_EXE" ]; then
+if [[ ! -f "$MIRROR_EXE" ]]; then
     echo "ERROR: clang-mirror not found."
     echo "$MIRROR_EXE"
     exit 1
 fi
 
-if [ ! -f "$SOURCE_LIST" ]; then
+if [[ ! -f "$SOURCE_LIST" ]]; then
     echo "ERROR: reflection_srcs.txt not found."
     echo "$SOURCE_LIST"
     exit 1
 fi
 
-FILE_ARGS=""
+FILE_ARGS=()
 
-while IFS= read -r LINE || [ -n "$LINE" ]; do
-    if [ -z "$LINE" ]; then
-        continue
-    fi
+while IFS= read -r LINE || [[ -n "$LINE" ]]; do
+    [[ -z "$LINE" ]] && continue
+    [[ "$LINE" =~ ^# ]] && continue
 
-    case "$LINE" in
-        \#*) continue ;;
-    esac
-
-    FILE_ARGS="$FILE_ARGS \"$PROJECT_ROOT/$LINE\""
+    FILE_ARGS+=("$PROJECT_ROOT/$LINE")
 done < "$SOURCE_LIST"
 
-echo
 echo "Running:"
-echo "\"$MIRROR_EXE\" $FILE_ARGS -out-dir=\"$OUT_DIR\" -- -std=c++20 -fsyntax-only"
+printf '"%s" ' "$MIRROR_EXE"
+printf '"%s" ' "${FILE_ARGS[@]}"
+printf '-out-dir="%s" -- -std=c++20 -fsyntax-only\n' "$OUT_DIR"
 echo
 
-eval "\"$MIRROR_EXE\" $FILE_ARGS -out-dir=\"$OUT_DIR\" -- -std=c++20 -fsyntax-only"
+"$MIRROR_EXE" \
+    "${FILE_ARGS[@]}" \
+    -out-dir="$OUT_DIR" \
+    -- -std=c++20 -fsyntax-only
 
 echo
-echo "Reflection generation complete."
-echo "$OUT_DIR"
-echo
+echo "Registration code generated in : $OUT_DIR/RTLRegistration/"
