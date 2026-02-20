@@ -8,9 +8,9 @@
 
 A minimal, end-to-end demonstration of modern C++ run-time reflection using:
 
-* [Reflection Template Library (RTL)](https://github.com/ReflectCxx/ReflectionTemplateLibrary-CPP) – the runtime reflection engine
+* [Reflection Template Library (RTL)](https://github.com/ReflectCxx/ReflectionTemplateLibrary-CPP) – the runtime reflection enginem.
 
-* [clang-mirror](https://github.com/ReflectCxx/clang-mirror) – the compile-time metadata generator
+* [clang-mirror](https://github.com/ReflectCxx/clang-mirror) – the compile-time metadata generator.
 
 This repository showcases RTL's core capabilities using a simple, focused project setup.
 
