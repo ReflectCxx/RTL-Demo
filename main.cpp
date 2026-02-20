@@ -55,7 +55,7 @@ int main() {
 
     Person personObj("Leo", dobStr);
 
-    std::cout << "\n created access-card :\n" << getAccessCard("", personObj);
+    std::cout << "\n created access-card :\n" << getAccessCard("NA", personObj);
 
     auto setLastName = fnSetLastName->targetT<Person>()
                                     .argsT<std::string_view>().returnT<void>();
@@ -84,7 +84,7 @@ int main() {
     // call Person::getAccessCard via reflection (as fast as native function-pointer call).
     auto cardStr = getAccessCard(purposeStr, personObj);
 
-    std::cout << "\n updated access-card :\n" << cardStr << "\n\n";
+    std::cout << "\n\n updated access-card :\n" << cardStr << "\n\n";
 
 	return 0;
 }
