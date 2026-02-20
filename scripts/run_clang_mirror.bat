@@ -8,7 +8,7 @@ set SCRIPT_DIR=%~dp0
 for %%I in ("%SCRIPT_DIR%..") do set PROJECT_ROOT=%%~fI
 
 set MIRROR_EXE=%PROJECT_ROOT%\clang-mirror\release\clang-mirror.exe
-set SOURCE_LIST=%SCRIPT_DIR%reflection_srcs.txt
+set SOURCE_LIST=%PROJECT_ROOT%\registration_srcs.txt
 set OUT_DIR=%PROJECT_ROOT%
 
 if not exist "%MIRROR_EXE%" (

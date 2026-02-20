@@ -11,7 +11,8 @@ static std::string getDOBstr(unsigned day, unsigned month, unsigned year) {
     auto getDateAsString = fnGetDateStr->argsT<unsigned, unsigned, unsigned>()
                                        .returnT<std::string>();
     if (!getDateAsString) {
-        std::cout << "\n functor init error : " << rtl::to_string(getDateAsString.get_init_error());
+        std::cout << "\n functor init error : " 
+                  << rtl::to_string(getDateAsString.get_init_error()) << std::endl;
         std::abort();
     }
     return getDateAsString(day, month, year);
@@ -27,7 +28,8 @@ int main() {
     auto getDateAsString = fnGetDateStr->argsT<nsdate::Date>()
                                        .returnT<std::string>();
     if (!getDateAsString) {
-        std::cout << "\n functor init error : " << rtl::to_string(getDateAsString.get_init_error());
+        std::cout << "\n functor init error : "
+                  << rtl::to_string(getDateAsString.get_init_error()) << std::endl;
         std::abort();
     }
 
@@ -46,18 +48,20 @@ int main() {
     auto getAccessCard = fnGetAccessCard->argsT<std::string_view, const Person&>()
                                         .returnT<std::string>();
     if (!getAccessCard) {
-        std::cout << "\n functor init error : " << rtl::to_string(getAccessCard.get_init_error());
+        std::cout << "\n functor init error : "
+                  << rtl::to_string(getAccessCard.get_init_error()) << std::endl;
         std::abort();
     }
 
     Person personObj("Leo", dobStr);
 
-    std::cout << "\n created access-card :\n" << getAccessCard("", personObj) << std::endl;
+    std::cout << "\n created access-card :\n" << getAccessCard("", personObj);
 
     auto setLastName = fnSetLastName->targetT<Person>()
                                     .argsT<std::string_view>().returnT<void>();
     if (!setLastName) {
-        std::cout << "\n functor init error : " << rtl::to_string(setLastName.get_init_error());
+        std::cout << "\n functor init error : " 
+                  << rtl::to_string(setLastName.get_init_error()) << std::endl;
         std::abort();
     }
 
@@ -67,7 +71,8 @@ int main() {
     auto setAddress = fnSetAddress->targetT<Person>()
                                   .argsT<std::string_view>().returnT<void>();
     if (!setAddress) {
-        std::cout << "\n functor init error : " << rtl::to_string(setLastName.get_init_error());
+        std::cout << "\n functor init error : "
+                  << rtl::to_string(setLastName.get_init_error()) << std::endl;
         std::abort();
     }
 
