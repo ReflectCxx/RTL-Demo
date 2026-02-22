@@ -19,7 +19,7 @@ exit /b 1
 )
 
 if not exist "%SOURCE_LIST%" (
-echo ERROR: reflection_srcs.txt not found.
+echo ERROR: registration_srcs.txt not found.
 echo Expected at:
 echo %SOURCE_LIST%
 exit /b 1
@@ -33,23 +33,19 @@ for /f "usebackq delims=" %%F in ("%SOURCE_LIST%") do (
 call :add_file "%%F"
 )
 
-echo.
-echo Final command:
-echo "%MIRROR_EXE%" %FILE_ARGS% -out-dir="%OUT_DIR%" -- -std=c++20 -fsyntax-only
+echo Running:
+
+echo "%MIRROR_EXE%" %FILE_ARGS% -out-dir="%OUT_DIR%" -- -std=c++20
 echo.
 
-"%MIRROR_EXE%" %FILE_ARGS% -out-dir="%OUT_DIR%" -- -std=c++20 -fsyntax-only
+"%MIRROR_EXE%" %FILE_ARGS% -out-dir="%OUT_DIR%" -- -std=c++20
 
 if errorlevel 1 (
 echo clang-mirror failed.
 exit /b 1
 )
 
-echo.
-echo Reflection generation complete.
-echo Output directory:
-echo %OUT_DIR%
-echo.
+echo Code generation process finished.
 
 endlocal
 exit /b 0
